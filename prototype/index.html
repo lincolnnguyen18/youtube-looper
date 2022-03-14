@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div id="player"></div>
+
+    <script>
+      var tag = document.createElement('script');
+
+      let start = 51*60+2
+      let stop = 53*60+24
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: 'lBpfjOaL8iw',
+          playerVars: {
+            'start': start
+          },
+          events: {
+            'onReady': onPlayerReady
+          }
+        });
+      }
+
+      function onPlayerReady(event) {
+        player.playVideo()
+        setInterval(() => {
+          let time = event.target.getCurrentTime();
+          if (time > stop) {
+            player.seekTo(start);
+          }
+        }, 100);
+      }
+    </script>
+  </body>
+</html>
