@@ -15,4 +15,4 @@ echo "Checking if node started..."
 lsof -i:$d7
 
 # Build vue client
-yarn build
+# yarn build
