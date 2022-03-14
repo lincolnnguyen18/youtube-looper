@@ -32,10 +32,11 @@ export default {
         // this.start = ''
         // this.end = ''
         // this.videoId = ''
-        this.videoId = 'lBpfjOaL8iw'
-        this.start = '51:02'
-        this.end = '53:24'
-        this.mode = 'playing'
+        window.location.href = `/video?videoId=${this.videoId}&start=${this.startSeconds}&end=${this.endSeconds}`
+        // this.videoId = 'lBpfjOaL8iw'
+        // this.start = '51:02'
+        // this.end = '53:24'
+        // this.mode = 'playing'
       }
     },
     closePlayer() {
@@ -53,9 +54,9 @@ export default {
     Player
   },
   mounted() {
-    this.videoId = 'lBpfjOaL8iw'
-    this.start = '51:02'
-    this.end = '53:24'
+    // this.videoId = 'lBpfjOaL8iw'
+    // this.start = '51:02'
+    // this.end = '53:24'
     // listen for escape key
     document.addEventListener('keyup', e => {
       if (e.key == 'Escape') {
@@ -85,9 +86,6 @@ export default {
     <button @click="submit">Loop Video</button>
   </div>
 </div>
-<div class="page2" v-if="playingMode">
-  <Player :videoId="videoId" :start="startSeconds" :end="endSeconds" />
-</div>
 <span class="material-icons-outlined close" @click="closePlayer" v-if="playingMode">close</span>
 </template>
 
@@ -112,6 +110,7 @@ html, body {
 }
 .header {
   user-select: none;
+  cursor: pointer;
 }
 .inputs {
   display: flex;

@@ -1,0 +1,10 @@
+{
+  "name": "youtube-looper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "lincolnnguyen18 <letsmakeaworld@icloud.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}

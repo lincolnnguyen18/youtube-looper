@@ -1,14 +1,46 @@
 <!DOCTYPE html>
 <html>
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      font-size: 16px;
+      font-family: 'Roboto', sans-serif;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .header {
+      user-select: none;
+      cursor: pointer;
+    }
+  </style>
   <body>
     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <h1 class="header">YouTube Looper</h1>
     <div id="player"></div>
 
     <script>
+      let header = document.querySelector('.header');
+      header.onclick = () => {
+        window.location.href = '/'
+      }
+
+      const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+      });
+
+      let videoId = params.videoId;
+      let start = params.start;
+      let stop = params.end;
+
       var tag = document.createElement('script');
 
-      let start = 51*60+2
-      let stop = 53*60+24
+      // let start = 51*60+2
+      // let stop = 53*60+24
 
       tag.src = "https://www.youtube.com/iframe_api";
       var firstScriptTag = document.getElementsByTagName('script')[0];
